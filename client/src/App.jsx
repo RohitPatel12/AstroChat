@@ -1,12 +1,33 @@
-import React from "react";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import Dashboard from './pages/Dashboard';
+import ProtectedRoute from './components/ProtectedRoute';
+import LandingPage from './pages/HomePage';
 
 function App() {
   return (
-    <>
-      <h1 className="text-2xl font-bold text-center mt-10 text-purple-700">
-        🔮 Astrology Consultation App
-      </h1>
-    </>
+    <Routes>
+      {/* Redirect root path to /login */}
+      <Route path="/" element={<LandingPage/>} />
+
+      <Route path="/login" element={<LoginPage />} />
+
+      <Route path='"/register' element={<RegisterPage/>} />
+
+      // <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+          <Dashboard />
+          </ProtectedRoute>
+        }
+        />
+      
+
+      {/* Catch-all route for undefined URLs */}
+      <Route path="*" element={<Navigate to="/login" />} />
+    </Routes>
   );
 }
 
