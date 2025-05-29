@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Link , Navigate} from "react-router-dom";
-import LoginPage from "./LoginPage";
+import Horoscopes from "../components/Horoscope";
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-50 via-white to-white">
@@ -13,22 +13,29 @@ const LandingPage = () => {
           <h1 className="text-2xl font-bold text-black">AstroApp</h1>
         </div>
         <nav className="hidden md:flex gap-6 text-gray-700 text-sm">
-          <a href="#" className="hover:text-black font-medium">Free Kundli</a>
+          {/* <a href="#" className="hover:text-black font-medium">Free Kundli</a>
           <a href="#" className="hover:text-black font-medium">Matching</a>
-          <a href="#" className="hover:text-black font-medium">Horoscope</a>
+          <a href="#" className="hover:text-black font-medium">Horoscope</a> */}
           <a href="#" className="hover:text-black font-medium">Blog</a>
         </nav>
-        <button className="bg-yellow-400 text-black font-semibold px-5 py-2 rounded-full hover:bg-yellow-500 transition">
+        <button 
+        className="bg-yellow-400 text-black font-semibold px-5 py-2 rounded-full hover:bg-yellow-500 transition">
           <Link to={'/login'}> Login </Link>
         </button>
         <button>
+            <Link to={"/register"}>
             register 
+            </Link>
         </button>
       </header>
 
+
+<div>
+    {/* <Horoscopes/> */}
+</div>
       {/* Hero Section */}
       <section className="text-center py-12 px-4">
-        <h2 className="text-md md:text-lg font-medium text-gray-600">200+ Celebs Recommend</h2>
+        {/* <h2 className="text-md md:text-lg font-medium text-gray-600">200+ Celebs Recommend</h2> */}
         <h1 className="text-4xl md:text-6xl font-bold mt-2 mb-6">Chat With Astrologer</h1>
         <button className="bg-black text-white px-8 py-3 text-lg rounded-full hover:scale-105 transform transition duration-200">
           Chat Now
@@ -52,6 +59,10 @@ const LandingPage = () => {
           </div>
         ))}
       </section>
+
+      <div>
+        {/* <Horoscopes/> */}
+      </div>
     </div>
   );
 };

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../services/auth'; // This should be your backend API service
 import { useAuth } from '../context/AuthContext';
-
+import SummaryApi from '../common/SummaryApi.jsx'
+import axios from 'axios';
 function RegisterPage() {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -28,11 +29,14 @@ function RegisterPage() {
       return setError('Passwords do not match');
     }
 
+    // Calls the backend
     try {
       setLoading(true);
-      const { data } = await registerUser(form); // Calls the backend
-      login(data); // Save auth token in context + localStorage
-      navigate('/dashboard');
+      const { data } = await axios({
+      ...SummaryApi.register,
+      data : data})  
+      // login(data); // Save auth token in context + localStorage
+      // navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     } finally {
