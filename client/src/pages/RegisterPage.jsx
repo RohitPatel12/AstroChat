@@ -30,7 +30,7 @@ function RegisterPage() {
       return setError('Passwords do not match');
     }
 
-    // Calls the backend
+    // Calls the backend api
     try {
       setLoading(true);
       const { data } = await api({
