@@ -1,9 +1,11 @@
 // client/src/api/axios.js
-import axios from 'axios';
-
+import axios, { Axios } from 'axios';
+import { baseURL } from '../src/common/SummaryApi';
 // Create a centralized axios instance
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // 🔁 Use your backend URL
+  baseURL:  baseURL,
+  Credentials: true
+  // 'http://localhost:5000/api', // 🔁 Use your backend URL
 });
 
 // Request Interceptor: Attach JWT from localStorage
