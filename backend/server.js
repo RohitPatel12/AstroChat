@@ -24,7 +24,7 @@ app.use(cors({
   origin: "http://localhost:5173", // Your frontend origin
   credentials: true               // 🔑 Allow cookies to be sent
 }));
-   
+       
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRouter);
 // app.use("/api/astrologer", astrologerRoutes);
@@ -32,7 +32,7 @@ app.use("/api/user", userRouter);
 app.get("/", (req, res) => {
   res.send("\u272e Astrology Backend is Running...");
 });
-
+     
 app.use((req, res) => {
   res.status(404).json({ message: 'Route not found from server.js'});
 });

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../services/auth'; // This should be your backend API service
 import { useAuth } from '../context/AuthContext';
-import SummaryApi from '../common/SummaryApi.jsx'
-import axios from 'axios';
+import SummaryApi from '../common/SummaryApi.jsx';
+// import api from '../'; // Adjust path according to your structure
 import api from '../../utils/Axios.js';
+
 function RegisterPage() {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -27,16 +27,26 @@ function RegisterPage() {
     setError('');
 
     if (form.password !== form.confirmPassword) {
-      return setError('Passwords do not match');
+      setError('Passwords do not match');
+      return;
     }
 
-    // Calls the backend api
     try {
       setLoading(true);
+
       const { data } = await api({
-      ...SummaryApi.register,
-      data : data})  
-      login(data); // Save auth token in context + localStorage
+        url: SummaryApi.register.url,       // '/auth/register'
+        method: SummaryApi.register.method, // 'post'
+        data: {
+          name: form.name,
+          email: form.email,
+          password: form.password
+        }
+      });
+
+      console.log('Registration response:', data);
+
+      login(data);       // Save auth token in context + localStorage
       navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
