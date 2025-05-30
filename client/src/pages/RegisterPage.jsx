@@ -4,6 +4,7 @@ import { registerUser } from '../services/auth'; // This should be your backend 
 import { useAuth } from '../context/AuthContext';
 import SummaryApi from '../common/SummaryApi.jsx'
 import axios from 'axios';
+import api from '../../utils/Axios.js';
 function RegisterPage() {
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -32,11 +33,11 @@ function RegisterPage() {
     // Calls the backend
     try {
       setLoading(true);
-      const { data } = await axios({
+      const { data } = await api({
       ...SummaryApi.register,
       data : data})  
-      // login(data); // Save auth token in context + localStorage
-      // navigate('/dashboard');
+      login(data); // Save auth token in context + localStorage
+      navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     } finally {

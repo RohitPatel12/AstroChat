@@ -21,7 +21,7 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cookieParser());
 app.use(cors({
-  origin: "http://localhost:3000", // Your frontend origin
+  origin: "http://localhost:5173", // Your frontend origin
   credentials: true               // 🔑 Allow cookies to be sent
 }));
    

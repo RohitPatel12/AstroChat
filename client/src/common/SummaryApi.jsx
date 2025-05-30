@@ -1,12 +1,14 @@
-export const baseURL = "http://localhost:3000"
+export const baseURL = "http://localhost:5173/"
 
 const SummaryApi = {
     register : {
-        url : '/api/user/register',
+        url : '/auth/register',
         method : 'post'
     },
     login : {
-        url : '/api/user/login',
+        url : '/auth/login',
         method : 'post'
     }
 }
+
+export default SummaryApi
