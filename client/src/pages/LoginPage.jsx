@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { loginUser } from '../services/auth';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { toast } from 'react-toastify';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -21,10 +22,15 @@ function LoginPage() {
     setError('');
     try {
       const { data } = await loginUser(form);
-      login(data); // Save to AuthContext + localStorage
+      login(data);
+      console.log(data)
+      toast.success("Login successful!"); // Save to AuthContext + localStorage
       navigate('/dashboard'); // Redirect to dashboard
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
+      toast.error(err);
+      toast.error(error);
+      
     } finally {
       setLoading(false);
     }
@@ -60,9 +66,9 @@ function LoginPage() {
         >
           {loading ? 'Logging in...' : 'Login'}
         </button>
-        <button>
+        {/* <button>
           register
-        </button>
+        </button> */}
         <button>
         forgot password 
         </button>

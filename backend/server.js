@@ -4,11 +4,11 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import connectDB from "./config/connectDb.js";
-import authRoutes from "./routes/auth.routes.js";
+import authRoutes from "./routes/authRoutes.js";
 // import userRoutes from "./routes/user.routes.js";
 // import astrologerRoutes from "./routes/astrologer.routes.js";
-import errorMiddleware from "./middleware/error.middleware.js";
-import userRouter from "./routes/user.routes.js";
+import errorMiddleware from "./middleware/errorMiddleware.js";
+import userRouter from "./routes/userRoutes.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();

@@ -5,9 +5,12 @@ import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import LandingPage from './pages/HomePage';
 import Horoscopes from './components/Horoscope';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
+    <>
     <Routes>
       {/* Redirect root path to /login */}
       <Route path="/" element={<LandingPage />} />
@@ -30,6 +33,8 @@ function App() {
       {/* Catch-all route for undefined URLs */}
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
+    <ToastContainer position="top-center" autoClose={3000} />
+    </>
   );
 }
 
